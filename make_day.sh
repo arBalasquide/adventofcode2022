@@ -15,11 +15,11 @@ chmod +x "day$DAY/main.py"
 # get cookies from firefox sql db
 # 3rd party script
 chmod +x "cookies.sh"
-./cookies.sh | grep -i "adventofcode" > cookies.txt
+./cookies.sh | grep -i "adventofcode" > /tmp/cookies.txt
 
 # can probably just pipe wget output directly to html2text but 2lazy4me
 wget "$URL/2022/day/$DAY" -O "tmp.txt"
 html2text "tmp.txt" > "day$DAY/prompt.txt"
 rm -f "tmp.txt"
 
-wget --load-cookies cookies.txt "$INPUT_URL" -O "day$DAY/input.txt"
+wget --load-cookies /tmp/cookies.txt "$INPUT_URL" -O "day$DAY/input.txt"
